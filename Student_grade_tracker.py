@@ -66,12 +66,12 @@ def show_all_students_and_grades():
 
 def show_passing_students():   
     for student in Students:
-        if int(student.score)>= 60:
+        if student.score>= 60:
             print(f"{student.name}: Passed")
 
 def show_failing_students():
     for student in Students:
-        if int(student.score) < 60:
+        if student.score < 60:
             print(f"{student.name}: Failed")
 
 def show_class_average():
@@ -79,7 +79,7 @@ def show_class_average():
         return
     total = 0
     for student in Students:
-        total += int(student.score)
+        total += student.score
     average = total / len(Students) 
     print(f"The average score is: {average:.2f}")
 
@@ -88,8 +88,8 @@ def show_highest_and_lowest():
         print("No students available.")
         return
 
-    highest_scorer = max(Students, key=lambda s: int(s.score))
-    lowest_scorer = min(Students, key=lambda s: int(s.score))
+    highest_scorer = max(Students, key=lambda s: s.score)
+    lowest_scorer = min(Students, key=lambda s: s.score)
 
     print(f"Highest Scorer: {highest_scorer.name} with score {highest_scorer.score}")
     print(f"Lowest Scorer: {lowest_scorer.name} with score {lowest_scorer.score}")
@@ -99,7 +99,7 @@ def remove_student_by_name():
     for student in Students:
         if student.name == name_to_remove:
             Students.remove(student)
-            print(f"{student} removed successfully!!")
+            print(f"{student.name} removed successfully!!")
             return
     print(f"No student found with the name {name_to_remove}.")
 
