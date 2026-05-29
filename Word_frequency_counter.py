@@ -15,14 +15,14 @@
 # Punctuation remove karna:
 import string
 #converting text to words from sample.txt
-with open("sample.txt", "r") as file:
+with open("sample.txt", "r") as file:    #opened the file and stored everything in text variable
     text = file.read()
-words = text.split()
-words = [word.strip(string.punctuation) for word in words]
+words = text.split()  #split() se text ko words mein tod diya
+words = [word.strip(string.punctuation) for word in words]  #removed punctuation from each word using strip() and string.punctuation
 
 # Case normalize:
-words = [word.lower() for word in words]
-print(words)
+words = [word.lower() for word in words]#lowercase main convert kiya
+
 
 # Common words — stop words:
 stop_words = {"the", "a", "an", "is", "are", "was", 
@@ -33,8 +33,8 @@ stop_words = {"the", "a", "an", "is", "are", "was",
 
 # Frequency count karna — dict se:
 frequency = {}
-for word in words:
-    frequency[word] = frequency.get(word, 0) + 1
+for word in words: # for each word
+    frequency[word] = frequency.get(word, 0) + 1 #agar word pehle se frequency mein hai to uski value 1 badha do, nahi to usko 0 se start karo
 print(frequency)
 
 # Sort by frequency:
