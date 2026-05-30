@@ -102,7 +102,7 @@ def delete_contact(contacts):
         print("Error: Contact not found. Delete operation failed.")
 
 
-#_______MAIN MENU___________
+
 
 def main():
     # Program start par file se data load karega
