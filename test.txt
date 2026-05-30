@@ -1,0 +1,5 @@
+.Write() is used to write something in the file 
+'w' is used to create the new file 
+open() creates or opens the file based on next argument which can be 'r', 'w' , 'a', 'r+' etc.
+'a' is used as argument for appending the new lines in the file
+with is the industry standard for file handling as it automatically closes the file and there is no need to write file.close()
