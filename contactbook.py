@@ -1,5 +1,3 @@
-import os
-
 # Custom Exception for deletion as requested
 class StudentNotFoundError(Exception):
     pass
