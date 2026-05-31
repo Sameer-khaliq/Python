@@ -3,3 +3,4 @@
 - Day 03 ✅ — Lists, tuples, list comprehensions, student grade tracker
 - Day 04 ✅ — Dictionaries, sets, dict comprehensions, word frequency counter
 - Day 05 ✅ — File I/O, error handling, custom exceptions, contact book
+- Day 06 ✅ — OOP, classes, inheritance, encapsulation, full banking system
