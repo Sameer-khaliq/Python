@@ -1,115 +1,84 @@
-# === Contact Book ===
-# 1. Add contact
-# 2. View all contacts
-# 3. Search contact
-# 4. Update contact
-# 5. Delete contact
-# 6. Exit
-class StudentNotFoundError(Exception):
-    pass
-    # contacts dictionary of dictionaries
-contacts = {
-    "Sameer": {"phone": "03001234567", "email": "sameer@email.com"},
-    "Ali": {"phone": "03009876543", "email": "ali@email.com"}
-}
+import os
 
-# File save karna:
-def save_contacts(contacts, filepath="contacts.txt"):
-    with open(filepath, 'w') as file:
-        for name,info in contacts.items():
-            file.write(f"{name},{info['phone']},{info['email']}\n")
+class ToDoManager:
+    def __init__(self, filename="todo.txt"):
+        self.filename = filename
+        self.tasks = []
+        self.load_tasks()
 
+    def load_tasks(self):
+        """File se tasks load karne ka logic (File I/O with Exception Handling)"""
+        try:
+            if os.path.exists(self.filename):
+                with open(self.filename, "r") as file:
+                    # Strip lines removes spaces and newlines
+                    self.tasks = [line.strip() for line in file.readlines()]
+            else:
+                self.tasks = []
+        except IOError as e:
+            print(f"Error loading file: {e}")
+            self.tasks = []
 
+    def save_tasks(self):
+        """Tasks ko text file mein save karne ka logic"""
+        try:
+            with open(self.filename, "w") as file:
+                for task in self.tasks:
+                    file.write(f"{task}\n")
+        except IOError as e:
+            print(f"Error saving data to file: {e}")
 
+    def add_task(self, task):
+        if not task:
+            print("Task empty nahi ho sakta!")
+            return
+        self.tasks.append(task)
+        self.save_tasks()
+        print(f"Task successfully added: '{task}'")
+
+    def list_tasks(self):
+        if not self.tasks:
+            print("\n--- No tasks found! Relax karo. ---")
+            return
+        print("\n=== YOUR TO-DO LIST ===")
+        for index, task in enumerate(self.tasks, start=1):
+            print(f"{index}. {task}")
+        print("=======================")
+
+    def remove_task(self, index):
+        try:
+            # 1-based index ko 0-based index balance karne ke liye
+            removed = self.tasks.pop(index - 1)
+            self.save_tasks()
+            print(f"Removed task: '{removed}'")
+        except IndexError:
+            print("Invalid task number! List check karo.")
+
+def main():
+    manager = ToDoManager()
     
-
-# File load karna:
-def load_contacts(filepath="contacts.txt"):
-    # tumhara code
-
-    contacts = {}
-    try:
-        with open(filepath,'r') as file:
-            for line in file:
-                line = line.strip()
-                if line:
-                    name,phone,email = line.split(',')
-                    contacts[name] = {'phone' : phone, 'email': email}
-    except FileNotFoundError:
-        print("File not found")
-    return contacts
-
-# Add contact:
-def add_contact(contacts, name, phone, email):
-    name = input("Enter name: ")
-    if not name:
-        print("name cannot be empty!!")
-        return
-    
-    if name in contacts:
-        print("Contact already exists!!")
-        return
-    phone = input("Enter phone no. : ")
-    email = input("Enter the email: ")
-    contacts[name] = {'phone':phone, 'email': email}
-    save_contacts('contacts.txt')
-    print(f"{name} added successfully as new contact")
-
-
-# Search:
-def search_contact(contacts, name):
-    name = input("Enter name to search in contacts: ")
-    if not name:
-        print("Name cannot be empty!!")
-        return
-    if name in contacts:
-        print("Contact found")
-        print(f"{name},{name['phone']},{name['email']}")
-
-
-# Delete:
-def delete_contact(contacts, name):
-    name = input("Enter name to delete: ")
-    try:
-        if name in contacts:
-            del contacts[name]
-            save_contacts('contacts.txt')
-            print("Contact deleted successfully")
+    while True:
+        print("\n1. Add Task | 2. View Tasks | 3. Delete Task | 4. Exit")
+        choice = input("Option select karein (1-4): ").strip()
+        
+        if choice == "1":
+            task = input("Task text likhein: ").strip()
+            manager.add_task(task)
+        elif choice == "2":
+            manager.list_tasks()
+        elif choice == "3":
+            manager.list_tasks()
+            if manager.tasks:
+                try:
+                    num = int(input("Kon sa task delete karna hai? (Number): "))
+                    manager.remove_task(num)
+                except ValueError:
+                    print("Invalid input! Number expected.")
+        elif choice == "4":
+            print("Goodbye!")
+            break
         else:
-            raise StudentNotFoundError
-    except(StudentNotFoundError):
-        print("No person of this name")
-    # StudentNotFoundError jaisi custom exception use karo
-    # tumhara code
+            print("Invalid choice, choose between 1 to 4.")
 
-def update_contact(contacts):
-    name = input("enter name to update: ")
-    if not name:
-        print("Name cannot be empty !!")
-        return
-    if name not in contacts:
-        print("Name not in the contacts!!")
-    current_phone = contacts['name']['phone']
-    current_email = contacts['name']['phone']
-    
-    new_phone = input("Enter new phone no.[{current_phone}] : ").strip()
-    new_email = input("Enter new email:[{current_email}] ").strip()
-    
-    if new_phone:
-        contacts['name']['phone'] = new_phone
-    if new_email:
-        contacts['name']['email'] = new_email
-
-    save_contacts('contacts.txt')
-    print("Contacts updated successfully!!")
-
-
-def view_all_contacts(contacts,filepath = 'contacts.txt'):
-    if not contacts:
-        print("Contact list is empty!!")
-    else:
-        with open(filepath, 'r') as file:
-            for name,info in contacts.items():
-                contact_list = file.read()
-                print(contact_list)
-view_all_contacts(contacts,'contacts.txt')
+if __name__ == "__main__":
+    main()

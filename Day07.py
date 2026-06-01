@@ -1,5 +1,5 @@
-import calculator
-print(calculator.add(10,20))
+import Calculator
+print(Calculator.add(10,20))
 
 import random
 
