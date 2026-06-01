@@ -4,4 +4,3 @@
 - Day 04 ✅ — Dictionaries, sets, dict comprehensions, word frequency counter
 - Day 05 ✅ — File I/O, error handling, custom exceptions, contact book
 - Day 06 ✅ — OOP, classes, inheritance, encapsulation, full banking system
-- Day 07 ✅ — Modules, pip, venv, and Milestone Project (To-Do CLI) completed.
