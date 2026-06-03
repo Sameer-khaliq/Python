@@ -5,4 +5,4 @@
 - Day 05 ✅ — File I/O, error handling, custom exceptions, contact book
 - Day 06 ✅ — OOP, classes, inheritance, encapsulation, full banking system
 - Day 07 ✅ — Modules, pip, venv, and Milestone Project (To-Do CLI) completed.
-- Day 08 (Done)- How the Internet & HTTP Works
+- Day 08 ✅ - How the Internet & HTTP Works
