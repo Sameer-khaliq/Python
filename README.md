@@ -6,3 +6,4 @@
 - Day 06 ✅ — OOP, classes, inheritance, encapsulation, full banking system
 - Day 07 ✅ — Modules, pip, venv, and Milestone Project (To-Do CLI) completed.
 - Day 08 ✅ - How the Internet & HTTP Works
+- Day 09 ✅ - Environment Variables & Terminal Comfort - dotenv, os.environ, venv, weather API
