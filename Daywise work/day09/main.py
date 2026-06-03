@@ -1,15 +1,15 @@
-# #Challenge 1 — Load and verify .env works
+#Challenge 1 — Load and verify .env works
 
-# from dotenv import load_dotenv
-# import os
-# load_dotenv()
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-# key = os.environ.get('WEATHER_API_KEY')
-# city = os.environ.get('CITY')
+key = os.environ.get('WEATHER_API_KEY')
+city = os.environ.get('CITY')
 
-# if key:
-#     print(f"Key found: {key[:5]}")
-#     print(f"City: {city}")
+if key:
+    print(f"Key found: {key[:5]}")
+    print(f"City: {city}")
 
 
 #Challenge 2 — Fetch live weather data
