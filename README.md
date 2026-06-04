@@ -9,3 +9,4 @@
 - Day 09 ✅ - Environment Variables & Terminal Comfort - dotenv, os.environ, venv, weather API
 - Day 10 ✅ - Day 10 - Complete project  weather APP, different cities clean output
 - Day 11 ✅ - FastAPI Intro - GET/POST routes, path params, query params, Pydantic models, HTTPException
+- Day 12 ✅ - Day 12 - Pydantic Models & Data Validation
